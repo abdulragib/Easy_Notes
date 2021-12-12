@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "985136519622",
+    "project_id": "note-app-86da4",
+    "storage_bucket": "note-app-86da4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985136519622:android:a706a01a8b6bfb8616fac7",
+        "android_client_info": {
+          "package_name": "com.zentamon.note_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "985136519622-hubs2a9452k7alf7k6je8c0dbdma47bl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zentamon.note_app",
+            "certificate_hash": "29c77f0fcc77e1c9970d07ace6c7c1021e823bc5"
+          }
+        },
+        {
+          "client_id": "985136519622-9l3gmthne7mrfl7ir1qdjifvl7bptqif.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBwFf_HLvHY42k4qDSpOzXMxOF8DH9ds4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "985136519622-9l3gmthne7mrfl7ir1qdjifvl7bptqif.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
