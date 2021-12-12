@@ -5,8 +5,12 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child:  Text("hello world"),
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          child:  Text("hello world"),
+        ),
+      ),
     );
   }
 }

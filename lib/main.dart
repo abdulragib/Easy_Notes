@@ -5,7 +5,7 @@ import 'package:note_app/pages/login.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         primaryColor: Colors.white,
       ),
-      home: const LoginPage(),
+      home: LoginPage(),
     );
   }
 }
