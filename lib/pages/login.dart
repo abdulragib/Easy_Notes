@@ -36,18 +36,26 @@ class LoginPage extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {},
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
                         "Continue With Google",
                         style: TextStyle(
-                          fontSize: 18.0,
+                          fontSize: 20.0,
                           fontFamily: "lato",
                         ),
                       ),
-
-                      Image.asset('Assets/images/google.png',
-                      height: 36),
+                      const SizedBox(
+                        width: 2.0
+                      ),
+                      Image.asset('Assets/images/google.png', height: 36),
                     ],
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.purple),
+                    padding: MaterialStateProperty.all(
+                      const EdgeInsets.symmetric(vertical: 12.0),
+                    ),
                   ),
                 ),
               ),
