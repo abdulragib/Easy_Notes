@@ -57,6 +57,11 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
                      Text(
                        "${data?['title']}",
+                       style: const TextStyle(
+                           fontSize: 32.0,
+                           fontFamily: 'lato',
+                           fontWeight: FontWeight.bold,
+                           color: Colors.grey),
                      )
                     ],
                   ),
@@ -73,3 +78,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+
+//snapshot.data?.docs[index].data() it is a object type data so we are coverting object to map format data
