@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/controller/google_auth.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -34,7 +35,9 @@ class LoginPage extends StatelessWidget {
                   horizontal: 10.0,
                 ),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: (){
+                    signInWithGoogle(context);
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

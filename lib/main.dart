@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'My Notes',
       theme: ThemeData.dark().copyWith(
         primaryColor: Colors.white,
+        scaffoldBackgroundColor: Color(0xff070706),
       ),
       home: LoginPage(),
     );
