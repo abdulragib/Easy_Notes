@@ -18,7 +18,7 @@ class _addNoteState extends State<addNote> {
         .collection('users')
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .collection('notes');
-    var data={
+    var data = {
       "title": title,
       'description': des,
       'created': DateTime.now(),
@@ -34,7 +34,7 @@ class _addNoteState extends State<addNote> {
       child: Scaffold(
         body: SingleChildScrollView(
             child: Container(
-          padding: EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0),
           child: Column(children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -43,13 +43,14 @@ class _addNoteState extends State<addNote> {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Icon(Icons.arrow_back_ios_outlined, size: 24.0),
+                  child: const Icon(Icons.arrow_back_ios_outlined, size: 24.0),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(
                       Colors.grey[700],
                     ),
                     padding: MaterialStateProperty.all(
-                      EdgeInsets.symmetric(horizontal: 25.0, vertical: 8.0),
+                      const EdgeInsets.symmetric(
+                          horizontal: 25.0, vertical: 8.0),
                     ),
                   ),
                 ),
@@ -69,7 +70,8 @@ class _addNoteState extends State<addNote> {
                       Colors.grey[700],
                     ),
                     padding: MaterialStateProperty.all(
-                      EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
+                      const EdgeInsets.symmetric(
+                          horizontal: 25.0, vertical: 10.0),
                     ),
                   ),
                 ),
@@ -97,19 +99,17 @@ class _addNoteState extends State<addNote> {
                 ),
                 //
                 Container(
-                  height: MediaQuery.of(context).size.height*0.75,
+                  height: MediaQuery.of(context).size.height * 0.75,
                   padding: const EdgeInsets.only(top: 12.0),
                   child: TextFormField(
-                      decoration: const InputDecoration.collapsed(
-                        hintText: "Note Description",
-                      ),
-                      style: const TextStyle(
-                          fontSize: 20.0,
-                          fontFamily: 'lato',
-                          color: Colors.grey),
-                      onChanged: (_val) {
-                        des = _val;
-                      },
+                    decoration: const InputDecoration.collapsed(
+                      hintText: "Note Description",
+                    ),
+                    style: const TextStyle(
+                        fontSize: 20.0, fontFamily: 'lato', color: Colors.grey),
+                    onChanged: (_val) {
+                      des = _val;
+                    },
                     maxLines: 20,
                   ),
                 ),

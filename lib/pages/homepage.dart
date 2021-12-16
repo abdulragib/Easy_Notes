@@ -50,13 +50,13 @@ class _HomePageState extends State<HomePage> {
       ),
       //
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Notes",
           style: TextStyle(
               fontSize: 20.0, fontFamily: 'lato', color: Colors.white70),
         ),
         elevation: 0.0,
-        backgroundColor: Color(0xff070706),
+        backgroundColor: const Color(0xff070706),
       ),
       //
       body: FutureBuilder<QuerySnapshot>(
