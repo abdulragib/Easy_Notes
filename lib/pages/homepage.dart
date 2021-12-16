@@ -65,6 +65,19 @@ class _HomePageState extends State<HomePage> {
         // future take snapsort of documents and use to execute function which return return result in future
         builder: (context, snapshot) {
           if (snapshot.hasData) {
+            //
+            if (snapshot.data?.docs.length == 0) {
+              return const Center(
+                child: Text(
+                  "You have no saved Notes!",
+                  style: TextStyle(
+                    color: Colors.white70,
+                    fontSize: 20,
+                  ),
+                ),
+              );
+            }
+            //
             return ListView.builder(
               // used to return anykind of data in scrollable list format
               itemCount: snapshot.data?.docs.length,
@@ -80,6 +93,7 @@ class _HomePageState extends State<HomePage> {
                     data?['created'].toDate(); //fetching time from firebase
                 String formattedTime =
                     DateFormat.yMMMd().add_jm().format(mydateTime);
+
                 return InkWell(
                   onTap: () {
                     Navigator.of(context)
