@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
           Icons.add,
           color: Colors.white70,
         ),
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.white38,
       ),
       //
       appBar: AppBar(
@@ -109,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                                 color: Colors.black87),
                           ),
                           //
-                          SizedBox(
+                          const SizedBox(
                             height: 3.0,
                           ),
                           //
@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                             alignment: Alignment.centerRight,
                             child: Text(
                               formattedTime,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 17.0,
                                   fontFamily: 'lato',
                                   color: Colors.black87),
@@ -131,7 +131,7 @@ class _HomePageState extends State<HomePage> {
               },
             );
           } else {
-            return Center(
+            return const Center(
               child: Text("Loading..."),
             );
           }
