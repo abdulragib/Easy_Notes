@@ -60,7 +60,7 @@ class _ViewNoteState extends State<ViewNote> {
                       ),
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                          Colors.red[400],
+                          Colors.red[300],
                         ),
                         padding: MaterialStateProperty.all(
                           EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
