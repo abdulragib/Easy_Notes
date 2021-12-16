@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:note_app/pages/viewnote.dart';
 import '../pages/addnote.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,9 +30,17 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => addNote(),
-          ));
+          Navigator.of(context)
+              .push(
+            MaterialPageRoute(
+              builder: (context) => addNote(),
+            ),
+          )
+              .then((value) {
+            // when addNote take will done after that then((value){}) will called with future value.
+            print("Calling Set State !");
+            setState(() {});
+          });
         },
         child: const Icon(
           Icons.add,
@@ -38,9 +48,21 @@ class _HomePageState extends State<HomePage> {
         ),
         backgroundColor: Colors.grey,
       ),
+      //
+      appBar: AppBar(
+        title: Text(
+          "Notes",
+          style: TextStyle(
+              fontSize: 20.0, fontFamily: 'lato', color: Colors.white70),
+        ),
+        elevation: 0.0,
+        backgroundColor: Color(0xff070706),
+      ),
+      //
       body: FutureBuilder<QuerySnapshot>(
         // future builder used to fetch dynamic data which we fetch from firebase
-        future: ref.get(),// future take snapsort of documents and use to execute function which return return result in future
+        future: ref.get(),
+        // future take snapsort of documents and use to execute function which return return result in future
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
@@ -48,22 +70,62 @@ class _HomePageState extends State<HomePage> {
               itemCount: snapshot.data?.docs.length,
               //couting how many docs in notes collection
               itemBuilder: (context, index) {
-                Random random = Random(); // Random() comes from dart.math package and use to generate random number
-                Color bg= myColors[random.nextInt(4)];//nextInt used to creates non-negative integer
-                Map? data = snapshot.data?.docs[index].data() as Map?; // data() used to get data like title and description from document
-                return Card(
-                  color: bg,
-                  child: Column(
-                    children: <Widget>[
-                     Text(
-                       "${data?['title']}",
-                       style: const TextStyle(
-                           fontSize: 32.0,
-                           fontFamily: 'lato',
-                           fontWeight: FontWeight.bold,
-                           color: Colors.grey),
-                     )
-                    ],
+                Random random =
+                    Random(); // Random() comes from dart.math package and use to generate random number
+                Color bg = myColors[random
+                    .nextInt(4)]; //nextInt used to creates non-negative integer
+                Map? data = snapshot.data?.docs[index].data()
+                    as Map?; // data() used to get data like title and description from document
+                DateTime mydateTime =
+                    data?['created'].toDate(); //fetching time from firebase
+                String formattedTime =
+                    DateFormat.yMMMd().add_jm().format(mydateTime);
+                return InkWell(
+                  onTap: () {
+                    Navigator.of(context)
+                        .push(
+                      MaterialPageRoute(
+                        builder: (context) => ViewNote(data!, formattedTime,
+                            snapshot.data!.docs[index].reference),
+                      ),
+                    )
+                        .then((value) {
+                      setState(() {});
+                    });
+                  },
+                  child: Card(
+                    color: bg,
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            "${data?['title']}",
+                            style: const TextStyle(
+                                fontSize: 24.0,
+                                fontFamily: 'lato',
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black87),
+                          ),
+                          //
+                          SizedBox(
+                            height: 3.0,
+                          ),
+                          //
+                          Container(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              formattedTime,
+                              style: TextStyle(
+                                  fontSize: 17.0,
+                                  fontFamily: 'lato',
+                                  color: Colors.black87),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                   ),
                 );
               },
@@ -78,6 +140,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
 
 //snapshot.data?.docs[index].data() it is a object type data so we are coverting object to map format data

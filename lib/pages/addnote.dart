@@ -91,6 +91,11 @@ class _addNoteState extends State<addNote> {
                     onChanged: (_val) {
                       title = _val;
                     }),
+                //
+                SizedBox(
+                  height: 10,
+                ),
+                //
                 Container(
                   height: MediaQuery.of(context).size.height*0.75,
                   padding: const EdgeInsets.only(top: 12.0),

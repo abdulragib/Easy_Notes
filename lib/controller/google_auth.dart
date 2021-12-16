@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:note_app/pages/homepage.dart';
 
-GoogleSignIn googleSignIn = GoogleSignIn();
-final FirebaseAuth auth = FirebaseAuth.instance;
-CollectionReference users = FirebaseFirestore.instance.collection('users');
+GoogleSignIn googleSignIn = GoogleSignIn();//for google signin
+final FirebaseAuth auth = FirebaseAuth.instance;//for authentication
+CollectionReference users = FirebaseFirestore.instance.collection('users');//firestore collection
 
 Future signInWithGoogle(BuildContext context) async {
-  try{
+  try{//try for error handling
     //for sign google sign in prompt and selecting one google account
     final GoogleSignInAccount?  googleSignInAccount= await googleSignIn.signIn();
 
@@ -18,7 +18,7 @@ Future signInWithGoogle(BuildContext context) async {
         GoogleSignInAuthentication? googleSignInAuthentication = await googleSignInAccount.authentication;
 
         //taking id token and accesstoken to create firebase user.
-        final AuthCredential credential  = GoogleAuthProvider.credential(
+        final AuthCredential credential  = GoogleAuthProvider.credential(// googleAuthProvider.credential creates new googlecredential
           accessToken: googleSignInAuthentication.accessToken,
           idToken: googleSignInAuthentication.idToken,
         );
