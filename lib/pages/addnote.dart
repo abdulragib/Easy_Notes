@@ -92,7 +92,7 @@ class _addNoteState extends State<addNote> {
                       title = _val;
                     }),
                 //
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 //
