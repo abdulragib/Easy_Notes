@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:note_app/pages/login.dart';
 import 'package:note_app/pages/viewnote.dart';
 import '../pages/addnote.dart';
 
@@ -24,6 +25,15 @@ class _HomePageState extends State<HomePage> {
     Colors.green[200],
     Colors.deepPurple[200],
   ];
+
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  Future<void> _signOut() async {
+    await _auth.signOut();
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+      builder: (context) => LoginPage(),
+    ));
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +66,20 @@ class _HomePageState extends State<HomePage> {
               fontSize: 20.0, fontFamily: 'lato', color: Colors.white70),
         ),
         elevation: 0.0,
-        backgroundColor: const Color(0xff070706),
+        backgroundColor: Color(0xff070706),
+        actions: [
+          InkWell(
+            onTap: _signOut,
+            child: const Padding(
+              padding: EdgeInsets.only(top: 15.0),
+              child: Text(
+                "Sign out",
+                style: TextStyle(
+                    fontSize: 17.0, fontFamily: 'lato', color: Colors.white70),
+              ),
+            ),
+          ),
+        ],
       ),
       //
       body: FutureBuilder<QuerySnapshot>(
