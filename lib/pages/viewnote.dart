@@ -21,7 +21,7 @@ class _ViewNoteState extends State<ViewNote> {
 
   void delete() async {
     //delete from db
-    await widget.ref.delete();
+    await widget.ref.delete(); //widget. is current instace of stateful widget
     Navigator.pop(context);
   }
 
@@ -53,6 +53,7 @@ class _ViewNoteState extends State<ViewNote> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                //
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -116,6 +117,7 @@ class _ViewNoteState extends State<ViewNote> {
                     ])
                   ],
                 ),
+                //
                 const SizedBox(height: 12.0),
                 Form(
                   key: key,
